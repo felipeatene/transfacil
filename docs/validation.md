@@ -26,3 +26,13 @@ vida ou validação biométrica. Câmera real e equipamentos Tacom não foram
 homologados. Os resultados não demonstram autorização para operar bilhetagem real.
 O fechamento foi revisado pelo agente; não representa execução automática do
 comando `$speckit-converge`.
+
+## Réplica BHBUS+ / totem — feature 002
+
+- `npm test`: 10 testes de domínio aprovados, regras preservadas.
+- `npm run test:e2e`: 8 testes aprovados com Chromium local. Incluem navegação home/LGPD, gestão facial, saldo/permissões/revogação, cartão/QR/facial no totem, entrada/saída gravação, câmera negada e nomes longos.
+- `npm run build`: TypeScript e Vite aprovados.
+- Capturas desktop 1440 e móvel 390 conferidas; sem overflow horizontal nos testes. Capturas específicas do app em gravação, LGPD e totem em gravação disponíveis localmente em `.impeccable/review/`, não versionadas.
+- Revisão independente: SHIP no escopo de composição, navegação e legibilidade, sem correções obrigatórias.
+- As imagens originais não estão no filesystem desta execução: logos, cartões e banner são aproximações CSS/tipográficas. Não houve comparação pixel a pixel, e não se afirma réplica exata.
+- Workflow Pages e configuração Vite existentes foram preservados. Débito fictício R$ 5 permanece no domínio; R$ 6,25 é texto da referência física, distinção indicada no painel.

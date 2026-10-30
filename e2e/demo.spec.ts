@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 test('permissões, saldo, revogação e cadastro funcionam na interface', async ({page})=>{
- await page.goto('http://127.0.0.1:5173');
+ await page.goto('http://127.0.0.1:5173');await page.getByRole('button',{name:'Embarque facial',exact:true}).click();
  await page.getByRole('button',{name:'Simular embarque'}).click();
  await expect(page.getByText('Boa viagem!',{exact:true})).toBeVisible();
  await expect(page.locator('.balance')).toHaveText('R$ 30,00');
@@ -28,7 +28,7 @@ test('permissões, saldo, revogação e cadastro funcionam na interface', async 
 });
 test('desktop e móvel não apresentam overflow; captura',async({page})=>{
  for(const [name,width,height] of [['desktop',1440,1100],['mobile',390,844]] as const){
-  await page.setViewportSize({width,height});await page.goto('http://127.0.0.1:5173');
+  await page.setViewportSize({width,height});await page.goto('http://127.0.0.1:5173');await page.getByRole('button',{name:'Embarque facial',exact:true}).click();
   await page.evaluate(()=>document.fonts.ready);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
   await page.screenshot({path:`.impeccable/review/${name}.png`,fullPage:true});
@@ -36,7 +36,7 @@ test('desktop e móvel não apresentam overflow; captura',async({page})=>{
 });
 test('falha da câmera permite continuar em simulação',async({page})=>{
  await page.addInitScript(()=>{Object.defineProperty(navigator,'mediaDevices',{value:{getUserMedia:()=>Promise.reject(new Error('denied'))}});});
- await page.goto('http://127.0.0.1:5173');
+ await page.goto('http://127.0.0.1:5173');await page.getByRole('button',{name:'Embarque facial',exact:true}).click();
  await page.getByRole('button',{name:'Usar minha câmera'}).click();
  await expect(page.getByRole('status')).toContainText('Câmera indisponível');
  await page.getByRole('button',{name:'Simular embarque'}).click();
@@ -45,7 +45,7 @@ test('falha da câmera permite continuar em simulação',async({page})=>{
 
 test('apelidos longos preservam o layout móvel e o cadastro funciona por teclado',async({page})=>{
  await page.setViewportSize({width:390,height:844});
- await page.goto('http://127.0.0.1:5173');
+ await page.goto('http://127.0.0.1:5173');await page.getByRole('button',{name:'Embarque facial',exact:true}).click();
  const name='W'.repeat(32);
  await page.getByLabel('Cadastrar convidado fictício').fill(name);
  await page.getByLabel('Cadastrar convidado fictício').press('Enter');
