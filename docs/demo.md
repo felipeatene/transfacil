@@ -10,6 +10,7 @@
 8. Se houver câmera disponível, abrir a prévia e explicar que não reconhece rostos.
    Se não houver, seguir pelo simulador; nenhum fluxo depende da câmera.
 9. Explicar que cartão/QR permanecem alternativas conceituais e reiniciar a demo.
+10. Abrir **Artigo do case**, conferir que o texto descreve a sessão como simulação e copiar ou baixar o Markdown para publicar.
 
 ## O que esta apresentação não demonstra
 Não mede reconhecimento facial, prova de vida, resistência a fraude ou viabilidade

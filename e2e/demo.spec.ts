@@ -43,6 +43,20 @@ test('falha da câmera permite continuar em simulação',async({page})=>{
  await expect(page.getByText('Boa viagem!',{exact:true})).toBeVisible();
 });
 
+test('artigo do case abre com o texto da sessão e a opção de baixar',async({page})=>{
+ await page.goto('http://127.0.0.1:5173');await page.getByRole('button',{name:'Embarque facial',exact:true}).click();
+ await page.getByRole('button',{name:'Simular embarque'}).click();
+ await page.getByRole('button',{name:'Artigo do case'}).click();
+ await expect(page.getByRole('heading',{name:'Artigo do case'})).toBeVisible();
+ await expect(page.getByRole('button',{name:'Baixar .md'})).toBeVisible();
+ await expect(page.locator('.case-preview')).toContainText('não descreve reconhecimento facial real');
+ await expect(page.locator('.case-preview')).toContainText('Alex Demo · linha 5104 — aprovado');
+ await page.setViewportSize({width:390,height:844});
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.getByRole('button',{name:'Fechar artigo'}).click();
+ await expect(page.getByRole('heading',{name:'Artigo do case'})).toBeHidden();
+});
+
 test('apelidos longos preservam o layout móvel e o cadastro funciona por teclado',async({page})=>{
  await page.setViewportSize({width:390,height:844});
  await page.goto('http://127.0.0.1:5173');await page.getByRole('button',{name:'Embarque facial',exact:true}).click();
