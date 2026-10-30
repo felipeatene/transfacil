@@ -1,0 +1,9 @@
+node_modules/
+.tools/
+dist/
+.vite/
+playwright-report/
+test-results/
+.env*
+!.env.example
+.impeccable/review/

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-30T05:40:00Z",
+  "title": "Design System: Transfácil laboratório",
+  "extensions": {
+    "shadows": [],
+    "motion": [
+      {
+        "name": "control-transition",
+        "value": "background .18s ease, color .18s ease",
+        "purpose": "Mudanças de estado em botões; desativadas com reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "800px"
+      },
+      {
+        "name": "mobile",
+        "value": "620px"
+      },
+      {
+        "name": "sticky-management",
+        "value": "1000px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ação principal",
+      "kind": "button",
+      "description": "Padrão extraído da interface implementada.",
+      "html": "<button class=\"ds-primary\">Simular embarque</button>",
+      "css": ".ds-primary{font-family:\"DM Sans\",sans-serif;background:#6338a0;color:white;border:0;border-radius:6px;padding:13px;font-size:13px}.ds-primary:hover{background:#4d2785}.ds-primary:focus-visible{outline:3px solid #925bcc;outline-offset:3px}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "description": "Padrão extraído da interface implementada.",
+      "html": "<label>Convidado fictício <input class=\"ds-input\" placeholder=\"Apelido fictício\"></label>",
+      "css": ".ds-input{font-family:\"DM Sans\",sans-serif;border:1px solid #d9d5dc;border-radius:6px;padding:10px 12px;font-size:12px}.ds-input:focus-visible{outline:3px solid #925bcc;outline-offset:3px}"
+    },
+    {
+      "name": "Painel de gestão",
+      "kind": "card",
+      "description": "Padrão extraído da interface implementada.",
+      "html": "<section class=\"ds-panel\">Meu transporte</section>",
+      "css": ".ds-panel{font-family:\"DM Sans\",sans-serif;background:#fff;border:1px solid #d9d5dc;border-radius:14px;padding:26px;color:#252126}"
+    },
+    {
+      "name": "Linha autorizada",
+      "kind": "chip",
+      "description": "Padrão extraído da interface implementada.",
+      "html": "<label class=\"ds-line\"><input type=\"checkbox\" checked>5104</label>",
+      "css": ".ds-line{font-family:\"DM Sans\",sans-serif;font-size:10px;padding:5px 10px;border:1px solid #bca4d7;border-radius:4px;background:#eee6f6;color:#533080}.ds-line:focus-within{outline:3px solid #925bcc;outline-offset:2px}"
+    },
+    {
+      "name": "Cabeçalho de navegação",
+      "kind": "nav",
+      "description": "Padrão extraído da interface implementada.",
+      "html": "<nav><a class=\"ds-brand\" href=\"#\">transfácil.</a></nav>",
+      "css": ".ds-brand{font-family:\"DM Sans\",sans-serif;color:#252126;text-decoration:none;font-size:28px;font-weight:700;letter-spacing:-1px}.ds-brand:focus-visible{outline:3px solid #925bcc;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "overview": "Interface de operação em português inspirada na clareza de informação de transporte. Fundo marfim, tinta grafite, roxo como ação e verde como autorização. DM Sans auto-hospedada, números tabulares. Desktop apresenta gestão e validador lado a lado; mobile os empilha. Controles nativos, foco visível, texto de erro específico, sem afirmações de biometria real."
+  }
+}
