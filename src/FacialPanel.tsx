@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { ArrowDownLeft, ArrowUpRight, BusFront, Camera, Check, ChevronRight, CreditCard, Plus, RotateCcw, ScanFace, ShieldCheck, Users, X } from 'lucide-react';
+import { ArrowDownLeft, ArrowUpRight, BusFront, Camera, Check, ChevronRight, CreditCard, FileText, Plus, RotateCcw, ScanFace, ShieldCheck, Users, X } from 'lucide-react';
+import CaseArticle from './CaseArticle';
 import '@fontsource/dm-sans/400.css';
 import '@fontsource/dm-sans/500.css';
 import '@fontsource/dm-sans/600.css';
@@ -17,6 +18,7 @@ export default function FacialPanel({account,setAccount}:{account:Account;setAcc
  const [name,setName]=useState('');
  const [formError,setFormError]=useState('');
  const [history,setHistory]=useState<{id:number;name:string;line:string;approved:boolean;reason:string}[]>([]);
+ const [article,setArticle]=useState(false);
  const [camera,setCamera]=useState(false);
  const [cameraMessage,setCameraMessage]=useState('A câmera é opcional. Você pode testar todos os cenários sem ela.');
  const video=useRef<HTMLVideoElement>(null);
@@ -45,6 +47,7 @@ export default function FacialPanel({account,setAccount}:{account:Account;setAcc
  <fieldset className="scenario"><legend>Escolha o cenário simulado</legend><label>Resultado de identidade<select value={identity} onChange={e=>{setIdentity(e.target.value as ValidationInput['identity']);setResult(null);}}><option value="match">Identidade confirmada (simulada)</option><option value="mismatch">Identidade diferente</option><option value="unavailable">Identificação indisponível</option></select></label><label className="presence"><input type="checkbox" checked={presence} onChange={e=>{setPresence(e.target.checked);setResult(null);}}/><span>Presença confirmada na simulação</span></label></fieldset>
  <button className="validate-button" onClick={validate}>Simular embarque <ArrowUpRight size={19}/></button><p className="fare-note">Tarifa ilustrativa: R$ 5,00 por embarque autorizado.</p><details className="alternative"><summary>Preciso de outra forma de embarcar <ChevronRight size={16}/></summary><p>Em um serviço real, cartão ou QR code devem continuar disponíveis. Esta demonstração não emite bilhetes nem libera catracas.</p></details>
  </section></div>
- <section className="activity"><div className="activity-heading"><h2>Últimos testes</h2><button onClick={reset}><RotateCcw size={15}/> Reiniciar demonstração</button></div>{history.length===0?<div className="empty"><ArrowDownLeft size={20}/><p>Seu primeiro teste aparece aqui. Selecione um perfil e simule um embarque.</p></div>:<ul>{history.map(h=><li key={h.id}><span className={'history-icon '+(h.approved?'success':'failure')}>{h.approved?<Check size={17}/>:<X size={17}/>}</span><div><strong>{h.name} <span>· Linha {h.line}</span></strong><p>{h.reason}</p></div><span className="history-amount">{h.approved?'− R$ 5,00':'Sem débito'}</span></li>)}</ul>}</section>
+ <section className="activity"><div className="activity-heading"><h2>Últimos testes</h2><div className="activity-actions"><button onClick={()=>setArticle(true)}><FileText size={15}/> Artigo do case</button><button onClick={reset}><RotateCcw size={15}/> Reiniciar demonstração</button></div></div>{history.length===0?<div className="empty"><ArrowDownLeft size={20}/><p>Seu primeiro teste aparece aqui. Selecione um perfil e simule um embarque.</p></div>:<ul>{history.map(h=><li key={h.id}><span className={'history-icon '+(h.approved?'success':'failure')}>{h.approved?<Check size={17}/>:<X size={17}/>}</span><div><strong>{h.name} <span>· Linha {h.line}</span></strong><p>{h.reason}</p></div><span className="history-amount">{h.approved?'− R$ 5,00':'Sem débito'}</span></li>)}</ul>}</section>
+ {article&&<CaseArticle account={account} history={history} onClose={()=>setArticle(false)}/>}
  <footer><p>Proposta independente · Sem vínculo oficial com Transfácil ou Tacom.</p><p>Detectar um sorriso não comprova identidade ou presença real. Nenhuma biometria é processada.</p><p>Dados ficam apenas nesta sessão e são restaurados ao recarregar.</p></footer></main></>;
 }

@@ -49,6 +49,9 @@ Como apresentador, quero uma prévia opcional para contextualizar o cenário.
 - FR07: resultados rejeitados não alteram o saldo; sem múltiplos débitos involuntários
   durante uma mesma operação de validação.
 - FR08: permitir reinício e explicar cartão/QR como alternativa conceitual.
+- FR09: o laboratório gera um artigo em Markdown da sessão atual, com ou sem testes
+  registrados, e permite copiar ou baixar o arquivo. O texto identifica a
+  demonstração e não apresenta o resultado como reconhecimento facial real.
 
 ## Fora do escopo
 Reconhecimento facial, prova de vida real, CPF, menores, pagamentos, emissão de
@@ -64,3 +67,5 @@ Se persistência local for usada, armazena apenas estado fictício e permite res
 Uma apresentação consegue cadastrar convidado, aprovar na 5104, negar em outra
 linha, revogar, negar novamente e restaurar a demo. O mesmo fluxo opera sem câmera
 e em viewport móvel, sem transmissão de imagens ou uso de dados pessoais reais.
+A mesma sessão gera um artigo do case que pode ser copiado ou baixado, com a
+simulação explícita.
